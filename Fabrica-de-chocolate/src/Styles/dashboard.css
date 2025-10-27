@@ -1,0 +1,80 @@
+.dashboard-container {
+  background: #1561d1;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.dashboard-header {
+  text-align: center;
+  color: #ffe900;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 2px solid #ffe900;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: #145dbe;
+  padding: 10px 0;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.dashboard-nav-col {
+  min-width: 300px;
+  background: #0542ad;
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dashboard-nav h2 {
+  margin-bottom: 16px;
+  color: #ffe900;
+}
+
+.dashboard-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-nav li {
+  margin-bottom: 14px;
+}
+
+.dashboard-nav a {
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.dashboard-nav a.active, .dashboard-nav a:hover {
+  color: #ffe900;
+  font-weight: bold;
+}
+.dashboard-brand {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffe900;
+  background: #0542ad;
+  border-radius: 14px;
+  margin-top: 30px;
+  padding: 14px 12px;
+}
+.dashboard-content {
+  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 0 6px 0 #092b6855;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}

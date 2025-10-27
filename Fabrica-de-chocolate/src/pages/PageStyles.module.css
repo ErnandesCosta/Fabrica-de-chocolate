@@ -1,0 +1,83 @@
+/* src/pages/PageStyles.module.css */
+/* Este CSS será usado por todas as 4 páginas de conteúdo */
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageHeader {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 16px;
+}
+
+.pageHeader h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-blue); /* Usando a variável que definimos */
+}
+
+.pageHeader p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 4px;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: var(--secondary-blue);
+  margin-bottom: 16px;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+.card .statusHighlight {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #008000; /* Verde para 'Estável' */
+}
+
+.card .statusHighlight.alert {
+  color: #D9A500; /* Amarelo para 'Alerta' */
+}
+
+.card .statusHighlight.danger {
+  color: #CC0000; /* Vermelho para 'Perigo' */
+}
+
+/* Estilos para a tabela de cronograma */
+.timelineTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.timelineTable th,
+.timelineTable td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.timelineTable th {
+  background-color: #f4f4f4;
+  color: var(--secondary-blue);
+}

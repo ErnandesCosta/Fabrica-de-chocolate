@@ -1,0 +1,14 @@
+.headerContainer {
+  background-color: var(--secondary-blue);
+  border-radius: 20px;
+  padding: 10px 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.headerContainer h1 {
+  color: var(--primary-yellow);
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+}

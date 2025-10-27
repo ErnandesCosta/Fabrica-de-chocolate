@@ -1,0 +1,39 @@
+.navContainer {
+  background-color: var(--secondary-blue);
+  border-radius: 20px;
+  padding: 24px;
+  /* Faz este painel crescer para ocupar o espaço disponível na sidebar */
+  flex-grow: 1; 
+}
+
+.title {
+  color: var(--primary-yellow);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.navList {
+  list-style: none;
+}
+
+.navList li {
+  margin-bottom: 18px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--text-light); /* Cor padrão do link */
+  font-size: 1.1rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+  color: var(--primary-yellow);
+}
+
+/* Estilo especial para o link ativo! */
+.navLink.active {
+  color: var(--primary-yellow);
+  font-weight: bold;
+}

@@ -1,0 +1,25 @@
+/* src/index.css */
+
+/* :root é onde definimos variáveis CSS globais */
+:root {
+  --primary-blue: #0022cc; /* Azul mais escuro do fundo */
+  --secondary-blue: #0033ff; /* Azul mais claro dos painéis */
+  --primary-yellow: #FFFF00; /* Amarelo dos textos e ícones */
+  --text-light: #FFFFFF;
+  --text-dark: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-blue);
+  color: var(--text-light);
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box; /* Garante que padding não afete o tamanho total */
+}
+
+/* Remove margens padrão que podem atrapalhar o grid */
+h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
