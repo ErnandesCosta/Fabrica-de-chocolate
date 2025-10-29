@@ -1,5 +1,5 @@
 .headerContainer {
-  background-color: var(--secondary-blue);
+  background-color: var(--brand-panel); /* Nova cor de painel */
   border-radius: 20px;
   padding: 10px 30px;
   width: 100%;
@@ -7,7 +7,7 @@
 }
 
 .headerContainer h1 {
-  color: var(--primary-yellow);
+  color: var(--brand-accent); /* Amarelo */
   font-size: 2.2rem;
   font-weight: bold;
   text-align: center;

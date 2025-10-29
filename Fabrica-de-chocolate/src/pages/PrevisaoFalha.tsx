@@ -1,4 +1,4 @@
-import styles from './PageStyles.module.css';
+import styles from './PageStyles.module.css'; // Usando o CSS do dashboard
 
 export default function PrevisaoFalha() {
   return (
@@ -9,9 +9,10 @@ export default function PrevisaoFalha() {
         <p>Monitoramento preditivo de anomalias e desgaste de componentes.</p>
       </header>
       
-      {/* Grade de Conteúdo */}
+      {/* Grid de Conteúdo */}
       <div className={styles.contentGrid}>
 
+        {/* Card 1 */}
         <div className={styles.card}>
           <h3>Análise de Vibração (IA)</h3>
           <p className={styles.statusHighlight}>Estável</p>
@@ -21,8 +22,10 @@ export default function PrevisaoFalha() {
           </p>
         </div>
 
+        {/* Card 2 */}
         <div className={styles.card}>
           <h3>Gêmeo Digital (Digital Twin)</h3>
+          {/* Note a classe 'styles.alert' para o status */}
           <p className={`${styles.statusHighlight} ${styles.alert}`}>Alerta</p>
           <p>
             Simulação de desgaste indica que o <strong>Rolamento R-4B</strong> atingirá
@@ -30,13 +33,15 @@ export default function PrevisaoFalha() {
           </p>
         </div>
         
+        {/* Card 3 */}
         <div className={styles.card}>
           <h3>Saúde dos Componentes</h3>
-          <ul>
-            <li>Motor Principal: <strong>98%</strong></li>
-            <li>Sistema de Resfriamento: <strong>95%</strong></li>
-            <li>Rolamento R-4B: <strong>74%</strong> (Agendar verificação)</li>
-            <li>Correias: <strong>89%</strong></li>
+          <ul className={styles.customList}>
+            <li>✓ Motor Principal: <strong>98%</strong></li>
+            <li>✓ Sistema de Resfriamento: <strong>95%</strong></li>
+            {/* Note a classe 'styles.alertText' para o item da lista */}
+            <li className={styles.alertText}>✓ Rolamento R-4B: <strong>74%</strong> (Agendar verificação)</li>
+            <li>✓ Correias: <strong>89%</strong></li>
           </ul>
         </div>
 

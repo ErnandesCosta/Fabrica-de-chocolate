@@ -1,51 +1,53 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 
-// Importe as páginas do Dashboard (Sidebar)
+// Importa as páginas principais (da nova Sidebar)
+import Diagnostico from '../pages/Diagnostico.tsx';
+import Processo from '../pages/Processo.tsx';
+import PlanoDeAcao from '../pages/PlanoDeAcao.tsx';
+
+// Importa as sub-páginas do Dashboard (da nova Sidebar)
 import Temperatura from '../pages/Temperatura.tsx';
 import Lubrificacao from '../pages/Lubrificacao.tsx';
 import PrevisaoFalha from '../pages/PrevisaoFalha.tsx';
 import ProximaManutencao from '../pages/ProximaManutencao.tsx';
-
-// Importe as páginas da Timeline
-import Diagnostico from '../pages/Diagnostico.tsx';
-import Processo from '../pages/Processo.tsx';
-import PlanoDeAcao from '../pages/PlanoDeAcao.tsx'; // Já criamos esta
+import Automacao from '../pages/Automacao.tsx';
 
 export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         
-        {/* O MainLayout é o "molde" fixo */}
+        {/* O MainLayout é o "molde" fixo para todas as páginas */}
         <Route path="/" element={<MainLayout />}>
           
-          {/* Rota inicial: redireciona para Diagnóstico */}
+          {/* Rota inicial: redireciona para a primeira etapa, "Diagnóstico" */}
           <Route index element={<Navigate to="/diagnostico" replace />} />
 
-          {/* Rotas da TIMELINE */}
+          {/* --- ROTAS PRINCIPAIS DA SIDEBAR --- */}
+
+          {/* Etapa 1: Diagnóstico */}
           <Route path="diagnostico" element={<Diagnostico />} />
+          
+          {/* Etapa 2: Processo */}
           <Route path="processo" element={<Processo />} />
-          
-          {/* RESOLUÇÃO: É o Dashboard! 
-            Você disse que o "dashboard" era uma das etapas.
-            Vamos fazer "Resolução" levar para a página "Temperatura".
-          */}
-          <Route path="resolucao" element={<Navigate to="/temperatura" replace />} />
-          
-          {/* RESULTADO: É o Plano de Ação!
-            Você disse que o "plano de ação" era os "resultados".
-          */}
+
+          {/* Etapa 4: Resultado */}
           <Route path="resultado" element={<PlanoDeAcao />} />
 
 
-          {/* Rotas da SIDEBAR (Navegação) */}
-          {/* Elas são as "filhas" da Resolução (o dashboard) */}
+          {/* --- ROTAS DO SUB-MENU "RESOLUÇÃO (DASHBOARD)" --- */}
+
+          {/* O link "Resolução" na sidebar nos leva direto para "Temperatura" */}
+          <Route path="resolucao" element={<Navigate to="/temperatura" replace />} />
+          
+          {/* As páginas "filhas" do dashboard */}
           <Route path="temperatura" element={<Temperatura />} />
           <Route path="lubrificacao" element={<Lubrificacao />} />
           <Route path="previsao-falha" element={<PrevisaoFalha />} />
           <Route path="proxima-manutencao" element={<ProximaManutencao />} />
-        
+          <Route path="automacao" element={<Automacao />} />
+
         </Route>
         
       </Routes>

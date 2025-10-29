@@ -1,48 +1,53 @@
-/* Este é o "cérebro" do seu layout */
 .layoutGrid {
   display: grid;
-  /* Define 2 colunas: 300px para a sidebar, o resto (1fr) para o conteúdo */
-  grid-template-columns: 300px 1fr;
-  
-  /* Define 3 linhas: auto (altura do header), 1fr (o máximo de espaço), auto (altura do footer) */
+  /* Layout padrão com sidebar */
+  grid-template-columns: 280px 1fr;
   grid-template-rows: auto 1fr auto;
-  
-  /* Mapeia os componentes para as áreas do grid */
   grid-template-areas:
     "header   header"
-    "sidebar  content"
+    "sidebar  content-wrapper"
     "footer   footer";
   
-  min-height: 100vh; /* Ocupa a altura total da tela */
-  gap: 16px; /* Espaçamento entre os painéis */
+  min-height: 100vh;
+  gap: 16px;
   padding: 16px;
   box-sizing: border-box;
+  /* O fundo do site (definido no index.css) aparece aqui */
+  background-color: var(--brand-bg);
 }
 
-/* Posiciona cada item na sua área definida */
+/* NÃO PRECISAMOS MAIS da lógica .dashboardHidden */
+
+/* --- ÁREAS DO GRID --- */
+
 .header  { grid-area: header; }
 .footer  { grid-area: footer; }
 
-/* A sidebar em si é um container flex para empilhar Navegação e Brand */
 .sidebar {
   grid-area: sidebar;
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espaço entre a Navegação e o CacauMaster */
+  gap: 16px;
 }
 
-/* O conteúdo principal (miolo branco) */
+.contentWrapper {
+  grid-area: content-wrapper;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CORREÇÃO: O conteúdo agora é transparente por padrão */
 .content {
-  grid-area: content;
-  background-color: #FFFFFF;
-  border-radius: 20px;
-  padding: 24px;
-  color: var(--text-dark); /* Texto escuro para o fundo branco */
+  background-color: transparent; /* SEM fundo branco */
+  padding: 0;
+  color: var(--text-light);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* Estilo da caixa "CacauMaster S.A" */
 .brandBox {
-  background-color: var(--secondary-blue);
+  background-color: var(--brand-panel); 
   border-radius: 20px;
   padding: 20px;
   display: flex;
@@ -50,5 +55,17 @@
   justify-content: center;
   font-size: 1.8rem;
   font-weight: bold;
-  color: var(--primary-yellow);
+  color: var(--brand-accent);
+}
+
+/* Responsividade (Básica para não quebrar) */
+@media (max-width: 768px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "content-wrapper"
+      "footer";
+  }
 }

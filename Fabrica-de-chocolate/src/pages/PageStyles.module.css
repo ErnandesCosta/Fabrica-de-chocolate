@@ -1,83 +1,154 @@
-/* src/pages/PageStyles.module.css */
-/* Este CSS será usado por todas as 4 páginas de conteúdo */
+/* TEMA ESCURO UNIFICADO PARA TODAS AS PÁGINAS DO DASHBOARD */
 
 .pageContainer {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .pageHeader {
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid var(--brand-panel);
   padding-bottom: 16px;
 }
 
 .pageHeader h2 {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--primary-blue); /* Usando a variável que definimos */
+  color: var(--brand-accent);
 }
 
 .pageHeader p {
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-light);
+  opacity: 0.8;
   margin-top: 4px;
 }
 
+/* Grid "auto-fit" (do jeito que estava) */
 .contentGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
   gap: 20px;
 }
 
+/* O "CARD" (PAINEL AZUL) */
 .card {
-  background-color: #f9f9f9;
-  border: 1px solid #e0e0e0;
+  background-color: var(--brand-panel);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* "Bordinha amarela" nos títulos */
 .card h3 {
   font-size: 1.5rem;
-  color: var(--secondary-blue);
+  color: var(--brand-accent);
   margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--brand-accent);
 }
 
 .card p {
   font-size: 1rem;
   line-height: 1.5;
-  color: #555;
+  color: var(--text-light);
+  opacity: 0.9;
 }
 
+/* --- ESTILOS DE STATUS (para a página Temperatura) --- */
 .card .statusHighlight {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #008000; /* Verde para 'Estável' */
+  color: #28a745; /* Verde */
 }
-
 .card .statusHighlight.alert {
-  color: #D9A500; /* Amarelo para 'Alerta' */
+  color: #dc3545; /* Vermelho */
 }
-
 .card .statusHighlight.danger {
-  color: #CC0000; /* Vermelho para 'Perigo' */
+  color: #dc3545; /* Vermelho */
 }
 
-/* Estilos para a tabela de cronograma */
+/* O texto da lista (Previsão de Falha) volta a ser amarelo */
+.alertText {
+  color: #ffc107 !important; /* Amarelo */
+  font-weight: bold;
+}
+.alertText strong {
+  color: #ffc107 !important; /* Amarelo */
+}
+
+
+/* --- ESTILOS DA TABELA (para a página Próxima Manutenção) --- */
 .timelineTable {
   width: 100%;
   border-collapse: collapse;
 }
-
 .timelineTable th,
 .timelineTable td {
-  border: 1px solid #ddd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 12px;
   text-align: left;
 }
-
 .timelineTable th {
-  background-color: #f4f4f4;
-  color: var(--secondary-blue);
+  background-color: var(--brand-bg);
+  color: var(--brand-accent);
+}
+.timelineTable tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- ESTILOS PARA PÁGINA AUTOMAÇÃO --- */
+
+/* Faz o card da imagem ocupar a LARGURA TOTAL */
+.contentGrid .spanFull {
+  grid-column: 1 / -1; 
+  padding: 0;
+  overflow: hidden;
+}
+
+/* --- CORREÇÃO: "AJEITE ESSA LINHA" --- */
+/* Esta regra agora adiciona o 'padding-bottom: 10px' que faltava */
+.spanFull h3 {
+  padding: 20px 20px 10px 20px;
+}
+/* --- FIM DA CORREÇÃO --- */
+
+.cardImage {
+  width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border-radius: 0 0 12px 12px;
+  opacity: 0.9;
+  max-height: 450px;
+  object-fit: contain; 
+}
+
+/* Lista personalizada (TEMA ESCURO) */
+.customList {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 16px;
+}
+.customList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+.customList li span {
+  font-weight: bold;
+  color: var(--brand-accent);
+}
+.customList li::before {
+  content: '✓';
+  font-weight: bold;
+  color: var(--brand-accent);
+}
+.customList li:has(span)::before {
+  display: none;
 }

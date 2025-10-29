@@ -1,83 +1,143 @@
+/* Este CSS é para as páginas que NÃO são o dashboard */
+
 .pageContainer {
-  /* Fundo azul que cobre o branco padrão do layout */
-  background-color: var(--secondary-blue);
+  background-color: var(--brand-panel);
   color: var(--text-light);
   border-radius: 20px;
   padding: 32px;
   height: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 32px;
+  /* * CORREÇÃO DE LAYOUT:
+   * Colunas reequilibradas. A lista (1fr) agora é MENOR que a
+   * coluna visual da direita (1.2fr), como você pediu.
+  */
+  grid-template-columns: 1fr 1.2fr; 
 }
 
-.imagePlaceholder {
-  width: 100%;
-  height: 300px;
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-style: italic;
-  opacity: 0.7;
-}
-
-.imageContainer img {
-  width: 100%;
-  max-height: 400px;
-  object-fit: contain;
-}
-
-.textContainer p {
-  font-size: 1.25rem;
-  line-height: 1.6;
-}
-.textContainer p:first-child {
-  margin-bottom: 24px;
-}
-
-/* Estilos para a página 'Processo' */
+/* Coluna 1: Lista de Problemas */
 .listContainer {
-  background-color: var(--primary-blue);
-  border-radius: 12px;
-  padding: 24px;
   height: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaço entre os itens da lista */
 }
 
 .title {
-  color: var(--primary-yellow);
+  color: var(--brand-accent);
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 24px;
-  border-bottom: 2px solid var(--primary-yellow);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--brand-accent);
   padding-bottom: 12px;
 }
 
-.listContainer ul {
-  list-style: none; /* Remove bolinhas padrão */
-  padding-left: 0;
-}
-
-.listContainer li {
-  font-size: 1.25rem;
-  margin-bottom: 16px;
+/* --- NOVO ESTILO PARA A LISTA DETALHADA --- */
+.problemItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  border-radius: 8px;
 }
 
-/* Adiciona o "check" amarelo */
-.listContainer li::before {
-  content: '✓';
-  color: var(--primary-yellow);
+.problemCheck {
+  color: var(--brand-accent);
   font-size: 1.5rem;
   font-weight: bold;
-  margin-right: 12px;
+  line-height: 1.2;
 }
 
-/* Ajuste para a página de Processo ter a lista na esquerda */
-.pageContainer:has(.listContainer) {
-  grid-template-columns: 1.2fr 0.8fr; /* Dá mais espaço para a lista */
+.problemTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.problemDesc {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  opacity: 0.8;
+  line-height: 1.5;
+}
+/* --- FIM DO NOVO ESTILO --- */
+
+
+/* Coluna 2: Visual (Imagem + Impacto) */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.imageContainer {
+  flex-grow: 1; /* Faz a imagem ocupar o espaço disponível */
+}
+
+.mediaAsset {
+  width: 100%;
+  height: 100%;
+  max-height: 350px; /* Limite para não ficar gigante */
+  object-fit: cover; /* Garante que a imagem preencha o espaço */
+  border-radius: 12px;
+}
+
+/* --- NOVO PAINEL DE IMPACTO --- */
+.impactCard {
+  background-color: var(--brand-bg); /* Fundo mais escuro */
+  border: 2px solid var(--brand-accent);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.impactTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.impactValue {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--brand-accent);
+  margin-bottom: 16px;
+}
+
+.impactDetails {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+.impactDetails strong {
+  color: var(--text-light);
+}
+/* --- FIM DO NOVO PAINEL --- */
+
+
+/* --- Estilos para a página de Diagnóstico (mantidos) --- */
+.textContainer { display: flex; flex-direction: column; gap: 20px; }
+.pageTitle { color: var(--brand-accent); font-size: 2rem; font-weight: bold; border-bottom: 2px solid var(--brand-accent); padding-bottom: 12px; margin-bottom: 12px; }
+.textContainer p { font-size: 1.2rem; line-height: 1.6; }
+.mediaContainer { background-color: var(--brand-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+.mediaTabs { display: flex; }
+.tabButton { flex: 1; padding: 14px; font-size: 1rem; font-weight: bold; border: none; cursor: pointer; background-color: #112140; color: var(--text-light); opacity: 0.7; transition: all 0.2s ease; border-bottom: 3px solid transparent; }
+.tabButton:hover { opacity: 1; }
+.tabButton.active { opacity: 1; background-color: var(--brand-panel); color: var(--brand-accent); border-bottom: 3px solid var(--brand-accent); }
+.mediaContent { padding: 16px; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pageContainer,
+  .pageContainer:has(.listContainer) {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,36 +1,55 @@
-.pageContainer {
-  /* Este container substitui o fundo branco */
-  background-color: var(--secondary-blue);
+.panel {
+  background-color: var(--brand-panel); /* O nosso azul de painel */
   color: var(--text-light);
   border-radius: 20px;
-  padding: 24px;
+  padding: 32px;
   height: 100%;
   box-sizing: border-box;
+  /* Permite que o título e a tabela se alinhem verticalmente */
+  display: flex;
+  flex-direction: column; 
+}
+
+.title {
+  color: var(--brand-accent);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--brand-accent);
+  padding-bottom: 12px;
+}
+
+/* Este container é a chave para a responsividade da tabela */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto; /* Adiciona scroll horizontal se a tabela for muito larga */
+  flex-grow: 1;
 }
 
 .actionTable {
   width: 100%;
+  min-width: 900px; /* Força um tamanho mínimo para a tabela */
   border-collapse: collapse;
-  table-layout: fixed; /* Distribui colunas igualmente */
-}
-
-.actionTable th,
-.actionTable td {
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 12px 10px;
-  vertical-align: top;
   text-align: left;
-  font-size: 0.9rem;
 }
 
 .actionTable th {
-  border-bottom: 2px solid var(--primary-yellow);
-  padding-bottom: 16px;
+  background-color: var(--brand-bg); /* Cabeçalho com o azul mais escuro */
+  color: var(--brand-accent);
   font-size: 1rem;
+  padding: 16px;
+  /* Borda sutil */
+  border-bottom: 2px solid var(--brand-accent);
 }
 
-/* Remove a borda da última coluna */
-.actionTable th:last-child,
-.actionTable td:last-child {
-  border-right: none;
+.actionTable td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+/* Efeito de hover nas linhas */
+.actionTable tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }

@@ -1,13 +1,12 @@
 .navContainer {
-  background-color: var(--secondary-blue);
+  background-color: var(--brand-panel); /* Nova cor de painel */
   border-radius: 20px;
   padding: 24px;
-  /* Faz este painel crescer para ocupar o espaço disponível na sidebar */
-  flex-grow: 1; 
+  flex-grow: 1; /* Ocupa o espaço disponível na sidebar */
 }
 
 .title {
-  color: var(--primary-yellow);
+  color: var(--brand-accent); /* Amarelo */
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 24px;
@@ -23,17 +22,17 @@
 
 .navLink {
   text-decoration: none;
-  color: var(--text-light); /* Cor padrão do link */
+  color: var(--text-light);
   font-size: 1.1rem;
   transition: color 0.2s ease-in-out;
 }
 
 .navLink:hover {
-  color: var(--primary-yellow);
+  color: var(--brand-accent);
 }
 
 /* Estilo especial para o link ativo! */
 .navLink.active {
-  color: var(--primary-yellow);
+  color: var(--brand-accent);
   font-weight: bold;
 }

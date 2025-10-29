@@ -1,8 +1,6 @@
 import React from 'react';
-// Importamos 'Link' e 'useLocation' em vez de 'NavLink'
 import { Link, useLocation } from 'react-router-dom';
 import { TbTool, TbRefresh, TbCircleCheck, TbTrophy } from 'react-icons/tb';
-// Garanta que esta importação está correta!
 import styles from './Timeline.module.css';
 
 // Mapeamento das etapas
@@ -13,43 +11,55 @@ const steps = [
   { path: '/resultado', icon: <TbTrophy />, label: 'Resultado' },
 ];
 
-// Lista de todas as páginas que fazem parte da fase "Resolução"
+// CORREÇÃO: Adicionamos '/automacao' a esta lista.
+// Isso diz à Timeline que "Automação" faz parte da "Resolução".
 const dashboardPaths = [
   '/resolucao',
   '/temperatura',
   '/lubrificacao',
   '/previsao-falha',
-  '/proxima-manutencao', // A página que você está vendo no print!
+  '/proxima-manutencao',
+  '/automacao', // <-- ESTA LINHA É A CORREÇÃO
 ];
 
 export default function Timeline() {
-  const location = useLocation(); // Pega a localização atual da URL
+  const location = useLocation();
   const currentPath = location.pathname;
+
+  // --- LÓGICA DE PROGRESSO ---
+  let currentActiveIndex = 0; 
+
+  for (let i = steps.length - 1; i >= 0; i--) {
+    const step = steps[i];
+    let isActive = false;
+
+    if (step.path === '/resolucao') {
+      isActive = dashboardPaths.includes(currentPath);
+    } else {
+      isActive = currentPath === step.path;
+    }
+
+    if (isActive) {
+      currentActiveIndex = i;
+      break; 
+    }
+  }
+  // --- FIM DA LÓGICA ---
 
   return (
     <div className={styles.timelineContainer}>
       <div className={styles.timeline}>
         {steps.map((step, index) => {
           
-          // Verificação inteligente de "ativo"
-          let isActive = false;
-          if (step.path === '/resolucao') {
-            // Se for 'Resolução', verifica se o path atual está na *lista* de paths
-            isActive = dashboardPaths.includes(currentPath);
-          } else {
-            // Para os outros, a verificação é normal
-            isActive = currentPath === step.path;
-          }
-
-          // A etapa 'Resolução' sempre vai linkar para a primeira página do dashboard
+          const isCompleted = index <= currentActiveIndex;
+          const isLineCompleted = (index + 1) <= currentActiveIndex;
           const linkPath = step.path === '/resolucao' ? '/temperatura' : step.path;
 
           return (
             <React.Fragment key={step.label}>
               <Link
                 to={linkPath}
-                // Aplica a classe 'active' manualmente se 'isActive' for verdadeiro
-                className={`${styles.stepLink} ${isActive ? styles.active : ''}`}
+                className={`${styles.stepLink} ${isCompleted ? styles.active : ''}`}
               >
                 <div className={styles.step}>
                   <div className={styles.iconWrapper}>
@@ -58,7 +68,12 @@ export default function Timeline() {
                   <span className={styles.label}>{step.label}</span>
                 </div>
               </Link>
-              {index < steps.length - 1 && <div className={styles.line}></div>}
+              
+              {index < steps.length - 1 && (
+                <div 
+                  className={`${styles.line} ${isLineCompleted ? styles.active : ''}`} 
+                />
+              )}
             </React.Fragment>
           );
         })}
